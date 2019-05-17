@@ -1,2 +1,2 @@
 # architemplate
-Default vanilla JS project with super simple CLI
+Default vanilla JS project generator with super simple CLI

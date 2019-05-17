@@ -1,0 +1,10 @@
+{
+	"author": "test-user",
+	"scripts": "",
+	"description": "test project for architemplate",
+	"license": "GNU",
+	"version": "0.1.0",
+	"main": "index.js",
+	"keywords": [],
+	"repository": {}
+}

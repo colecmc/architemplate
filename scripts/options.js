@@ -1,0 +1,26 @@
+module.exports = {
+  path: '',
+  name: '',
+  author: '',
+  description: '',
+  license: 'GNU',
+  version: '0.1.0',
+  'entry point': 'index.js',
+  git: {
+    'use git': 1,
+    'git url': '',
+  },
+  scripts: {
+    test: 'jest',
+  },
+  'use eslint': 1,
+  'use babel': 1,
+  'use jest': 1,
+  'use JS copy paste detection': 1,
+  'test directory': '__tests__',
+  'directory of distributable files': 'dist',
+  'source code directory': 'src',
+  'directory for source js': 'js',
+  'directory for source js utilities ': 'utils',
+  'directory for source styles': 'css',
+};
