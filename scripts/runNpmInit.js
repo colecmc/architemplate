@@ -38,11 +38,21 @@ module.exports = function runNpmInit(options) {
 
     const packageJSON = JSON.stringify(keyFilter(prepConfig, ['path']), null, '\t');
 
-    fs.writeFile(`${options.path}/packageX.json`, packageJSON, (err) => {
-      if (err) {
-        return reject(err);
+    fs.readdir(options.path, { withFileTypes: true }, (readdirError) => {
+      if (readdirError) {
+        fs.mkdir(options.path, { recursive: true }, (mkdirError) => {
+          if (mkdirError) {
+            reject(mkdirError);
+          }
+        });
       }
-      return resolve(`package.json has been written to ${options.path}`);
+
+      fs.writeFile(`${options.path}/packageX.json`, packageJSON, (writeFileError) => {
+        if (writeFileError) {
+          reject(writeFileError);
+        }
+        resolve(`package.json has been written to ${options.path}`);
+      });
     });
   });
 };
