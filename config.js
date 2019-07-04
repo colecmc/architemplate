@@ -1,9 +1,14 @@
 function factory(key, label, value) {
-  return { key, label, value };
+  return {
+    key,
+    value,
+    label: `${label}: `,
+  };
 }
 
 module.exports = function config(options) {
   return {
+    useDefault: factory('useDefault', 'use default (Y)', options.useDefault || 'Y'),
     path: factory('path', 'path', ''),
     author: factory('author', 'author', options.author || ''),
     scripts: factory('scripts', 'npm build process', ''),

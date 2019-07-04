@@ -4,7 +4,8 @@
   "description": "Default vanilla JS project with super simple CLI.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
