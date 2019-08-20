@@ -25,12 +25,29 @@ function getQuestion(item) {
   const val = record1 && record1.value;
   const lastVal = val.pop && val.pop();
 
-  return lastVal && lastVal.label;
+  return lastVal;
+}
+
+/**
+ * Create an object of indexed keys from an array.
+ * @param {Array} collection
+ */
+function objectFrom(collection) {
+  const object = {};
+
+  collection.forEach((item, index) => {
+    console.log({ item });
+    Object.entries(item).forEach((record) => {
+      Object.assign(object, { [index]: item[record.shift()] });
+    });
+  });
+
+  return object;
 }
 
 function closeReadLine(collection) {
   rl.close();
-  console.log('collection', collection);
+  console.log('collection', objectFrom(collection));
 }
 
 /**
@@ -41,14 +58,18 @@ function closeReadLine(collection) {
  */
 function loop(item, collection) {
   if (item.value) {
-    const question = getQuestion(item);
+    const query = getQuestion(item);
+    const question = query.label;
 
     if (question) {
       rl.question(question, (answer) => {
         if (question.includes('use default') && ['Y', 'y', 'yes', 'Yes'].some(record => answer === record)) {
           closeReadLine(collection);
         } else {
-          collection.reduce((a, b) => Object.assign(item, { value: answer }), {});
+//          console.log(objectFrom([query.key, { value: answer }]));
+//          collection.reduce((a, b) => Object.assign(item, { value: answer }), {});
+//          collection.push({ question, answer });
+          collection.push(answer);
           loop(monitor.next(), collection);
         }
       });
